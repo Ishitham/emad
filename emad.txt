@@ -1,0 +1,882 @@
+Set 2
+
+package com.example.set2;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+public class MainActivity extends AppCompatActivity {
+EditText username,password,address,age;
+TextView gender,user,add,gen,pass,ag;
+Button submit;
+RadioButton male,female;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        username=findViewById(R.id.username);
+        password=findViewById(R.id.password);
+        address=findViewById(R.id.address);
+        age=findViewById(R.id.age);
+        gender=findViewById(R.id.gender);
+        male=findViewById(R.id.male);
+        female=findViewById(R.id.female);
+        submit=findViewById(R.id.submit);
+//Display
+        user=findViewById(R.id.user);
+        pass=findViewById(R.id.pass);
+        add=findViewById(R.id.add);
+        gen=findViewById(R.id.gen);
+        ag=findViewById(R.id.ag);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name=username.getText().toString();
+                user.setText(name);
+                String pin=password.getText().toString();
+                pass.setText(pin);
+                String location=address.getText().toString();
+                add.setText(location);
+                String old=age.getText().toString();
+                ag.setText(old);
+                String category=null;
+                if(female.isChecked()){
+                    category=female.getText().toString();
+                    gen.setText(category);
+                }
+                else if(male.isChecked()){
+                    category=male.getText().toString();
+                    gen.setText(category);
+                }
+            }
+
+        });
+
+    }
+}
+
+XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="UserName"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/address"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        tools:layout_editor_absoluteX="0dp" />
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/gender"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Gender"
+        app:layout_constraintBottom_toTopOf="@+id/female"
+        app:layout_constraintTop_toBottomOf="@+id/address"
+        tools:layout_editor_absoluteX="0dp" />
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </RadioGroup>
+    <RadioButton
+        android:id="@+id/female"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Female"
+        app:layout_constraintBottom_toTopOf="@+id/male"
+        app:layout_constraintTop_toBottomOf="@+id/gender"
+        tools:layout_editor_absoluteX="0dp" />
+    <RadioButton
+        android:id="@+id/male"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Male"
+        app:layout_constraintBottom_toTopOf="@+id/age"
+        app:layout_constraintTop_toBottomOf="@+id/female"
+        tools:layout_editor_absoluteX="-16dp" />
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/submit"
+        app:layout_constraintTop_toBottomOf="@+id/male"
+        tools:layout_editor_absoluteX="0dp" />
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Submit"
+        app:layout_constraintBottom_toTopOf="@+id/user"
+        app:layout_constraintTop_toBottomOf="@+id/age"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        android:text="UserName"
+        app:layout_constraintBottom_toTopOf="@+id/pass"
+        app:layout_constraintTop_toBottomOf="@+id/submit"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/pass"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Password"
+        app:layout_constraintBottom_toTopOf="@+id/add"
+        app:layout_constraintTop_toBottomOf="@+id/user"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Address"
+        app:layout_constraintBottom_toTopOf="@+id/gen"
+        app:layout_constraintTop_toBottomOf="@+id/pass"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/gen"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Gender"
+        app:layout_constraintBottom_toTopOf="@+id/ag"
+        app:layout_constraintTop_toBottomOf="@+id/add"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/ag"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Age"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gen"
+        tools:layout_editor_absoluteX="0dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SMS
+
+package com.example.sms;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+Button button;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button=findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("sms:+917337474435"));
+                startActivity(intent);
+            }
+        });
+    }
+}
+Manifest:
+
+<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+<uses-permission android:name="android.permission.SEND_SMS"/>
+<uses-permission android:name="android.permission.READ_SMS"/>
+
+XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="135dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+RadioButton:
+
+package com.example.radiobutton;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+RadioButton cse,ece,it;
+Button button;
+TextView textView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        cse=findViewById(R.id.cse);
+        ece=findViewById(R.id.ece);
+        it=findViewById(R.id.it);
+        button=findViewById(R.id.button);
+        textView=findViewById(R.id.textView);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String branch=null;
+                if(cse.isChecked()){
+                    branch=cse.getText().toString();
+                    textView.setText(branch);
+                }
+                if(ece.isChecked()){
+                    branch=ece.getText().toString();
+                    textView.setText(branch);
+                }
+                if(it.isChecked()){
+                    branch=it.getText().toString();
+                    textView.setText(branch);
+                }
+            }
+        });
+    }
+}
+
+XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/cse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CSE" />
+
+        <RadioButton
+            android:id="@+id/ece"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ECE" />
+
+        <RadioButton
+            android:id="@+id/it"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IT" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="130dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="260dp"
+        android:hint="Choose the Branch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:layout_editor_absoluteX="67dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+URL:
+
+package com.example.url;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+EditText url;
+Button button;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        url=findViewById(R.id.url);
+        button=findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String l=url.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(l));
+                startActivity(intent);
+            }
+        });
+    }
+}
+
+XML:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:layout_marginBottom="414dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/url"
+        tools:layout_editor_absoluteX="130dp" />
+
+    <EditText
+        android:id="@+id/url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="Enter the URL"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="18dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Notification:
+
+package com.example.notif_external;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+Button button;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        button=findViewById(R.id.button);
+
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel("Notify","Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager=getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotificationCompat.Builder builder=new NotificationCompat.Builder(MainActivity.this,"Notify");
+                builder.setContentTitle("Ishitha's Notification");
+                builder.setContentText("Hii this is Ishitha");
+                builder.setSmallIcon(R.drawable.ic_launcher_background);
+                builder.setAutoCancel(true);
+
+                NotificationManagerCompat managerCompat=NotificationManagerCompat.from(MainActivity.this);
+                managerCompat.notify(1,builder.build());
+            }
+        });
+    }
+}
+
+XML:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="300dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="101dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+------------------------------------------------------------------------------------------------------------------------------------------
+
+ListView:
+
+package com.example.list_external;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ListView listview=findViewById(R.id.listview);
+        List<String> list= new ArrayList<>();
+        list.add("Isha");
+        list.add("Raghav");
+        ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1,list);
+        listview.setAdapter(arrayAdapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+                    startActivity(new Intent(MainActivity.this,Isha.class));
+                }
+                if(position==1){
+                    startActivity(new Intent(MainActivity.this,Raghav.class));
+                }
+            }
+        });
+    }
+}
+
+XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
+
+Manifest
+
+For both list:
+android:parentActivityName=".MainActivity"
+
+Lists -> Ishitha-XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Isha">
+
+    <TextView
+        android:id="@+id/itext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="412dp"
+        android:text="Ishitha"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+Isha-Java
+
+package com.example.list_external;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class Isha extends AppCompatActivity {
+TextView itext;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_isha);
+        itext=findViewById(R.id.itext);
+    }
+}
+
+Raghav-XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Raghav">
+
+  <TextView
+      android:id="@+id/rtext"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="90dp"
+      android:layout_marginTop="300dp"
+      android:layout_marginEnd="90dp"
+      android:layout_marginBottom="412dp"
+      android:text="Raghav"
+      android:textSize="34sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+Raghav-Java
+
+package com.example.list_external;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class Raghav extends AppCompatActivity {
+TextView rtext;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_raghav);
+        rtext=findViewById(R.id.rtext);
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+UserName & Password:-
+
+package com.example.user_pass;
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.AlertDialog;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import java.util.Scanner;
+public class MainActivity extends AppCompatActivity {
+EditText username,password;
+Button button;
+TextView display;
+Scanner data;
+String un,pass;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        username=findViewById(R.id.username);
+        password=findViewById(R.id.password);
+        display=findViewById(R.id.display);
+        button=findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean flag =false;
+                data=new Scanner(getResources().openRawResource(R.raw.logindetails));
+                while(data.hasNext()){
+                    String [] user=data.nextLine().split("\\s+");
+                    un=user[0];
+                    pass=user[1];         if(username.getText().toString().equals(un)&&password.getText().toString().equals(pass)){
+                        flag=true;
+                        break;
+                    }
+                }
+                if(flag){
+                    display.setText("Login success");
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("user Auth")
+                            .setMessage("Login success!!")
+                            .setCancelable(true).show();
+                }
+                else{
+                    display.setText("Login Failed");
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("User Auth")
+                            .setMessage("Login Failed")
+                            .setCancelable(true).show();
+                }
+            }
+        });
+    }
+}
+
+XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:ems="10"
+        android:hint="UserName"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="63dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/username"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Button"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        tools:layout_editor_absoluteX="147dp" />
+
+    <TextView
+        android:id="@+id/display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="196dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:layout_editor_absoluteX="35dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+Menu:
+ 
+package com.example.menu;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu_item,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id= item.getItemId();
+
+        if(id==R.id.dail){
+//            Toast.makeText(this, "Dail Number Clicked!", Toast.LENGTH_SHORT).show();
+
+            Intent intent=new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:123456789"));
+            startActivity(intent);
+        }
+        if(id==R.id.sms){
+//            Toast.makeText(this, "SMS Clicked!", Toast.LENGTH_SHORT).show();
+            
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("sms:123456789"));
+            startActivity(intent);
+        }
+        if(id==R.id.website){
+//            Toast.makeText(this, "Clicked Website!", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("https://www.google.com/"));
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+XML:
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+Main_item.XML:
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+    android:id="@+id/dail"
+    android:title="Dial Number"
+    app:showAsAction="never" />
+    <item
+        android:id="@+id/sms"
+        android:title="SMS"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/website"
+        android:title="Website"
+        app:showAsAction="never" />
+</menu>
+
+Manifest:
+
+<uses-permission android:name="android.permission.RECEIVE_SMS"/>
+<uses-permission android:name="android.permission.SEND_SMS"/>
+<uses-permission android:name="android.permission.READ_SMS"/>
+<uses-permission android:name="android.permission.CALL_PHONE" />
+
+----------------------------------------------------------------------------------------------------------------------------------
